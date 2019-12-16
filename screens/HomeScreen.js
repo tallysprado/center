@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {  StyleSheet, View, FlatList, Image, Dimensions } from 'react-native'
+import {  StyleSheet, View, FlatList, Image, Dimensions, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import {Text} from '../components';
-
+import {Block} from '../components/';
+import {Text} from '../components/';
 import {theme} from '../constants/';
 
 
@@ -42,41 +42,18 @@ export default class Home extends Component {
         );
     };
 
-    handleTab = tab => {
-        const {categories} = this.props;
-        const filtered = categories.filter(
-            category => category.tags.includes(tab.toLowerCase())
-        );
-
-        this.setState({active: tab, categories:filtered})
-    }
-    renderTab(tab) {
-        const {active} = this.state;
-        const isActive = active === tab;
-
-        return(
-            <TouchableOpacity
-                key={'tab-${tab}'}
-                onPress={()=>this.handleTab(tab)}
-                style={[styles.tab, isActive ? styles.active : null]}
-            >
-                <Text size={16}>
-                    {tab}
-                </Text>
-
-            </TouchableOpacity>
-        )
-    }
-
     render() {
         const {categories} = this.state;
-        const tabs = ['Tudo', 'Masculino', 'Feminino']
+        const tabs = ['Tudo', 'Masculino', 'Feminino'];
 
         return (
-            <View>
-                
-                <View flex={false} style={styles.tabs}>{tabs.map(tab=>this.renderTab(tab))} </View>
+            <View style={styles.containerPrincipal}>
 
+                <View style={styles.menu}>
+                    <Button title="Blusas"></Button>
+                    <Button title="Shorts"></Button>
+
+                </View>                
                 <FlatList 
                     data={data}
                     style={styles.container}
@@ -90,6 +67,15 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
+    containerPrincipal: {
+        flex:1,
+    },
+    menu: {
+        
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+    },
+
     item: {
         resizeMode: 'cover',
         width: 200,
