@@ -28,10 +28,10 @@ class App extends React.Component {
   };
 
 
-  async componentWillMount() {
+  async componentDidMount() {
     try {
         await Font.loadAsync({
-        GE_Ergonomic_Regular: require("./assets/fonts/GE_Ergonomic_Regular.ttf"),
+        Roboto_Regular: require("./assets/fonts/Roboto-Regular.ttf"),
       });
       this.setState({ fontLoaded: true });
     }catch(error){

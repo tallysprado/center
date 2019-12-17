@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {  StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, Text } from 'react-native'
+import {  StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, TouchableHighlight ,Text } from 'react-native'
 
 import {AppLoading} from 'expo';
 
@@ -24,33 +24,22 @@ const numColumns = 3;
 
 
 class HomeScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { pressStatus: false };
+    }
+    _onHideUnderlay() {
+        this.setState({ pressStatus: false });
+    }
+    _onShowUnderlay() {
+        this.setState({ pressStatus: true });
+    }
+    
     state = {
-        fontLoaded: false,
         categories: [],
+        pressStatus: false,
     }
 
-    async componentWillMount() {
-        try {
-            await Font.loadAsync({
-            GE_Ergonomic_Regular: require("./assets/fonts/GE_Ergonomic_Regular.ttf"),
-          });
-          this.setState({ fontLoaded: true });
-        }catch(error){
-          console.log('error loading fonts', error);
-    
-        }
-      }
-    
-
-    
-
-   
-
- 
-
-    componentDidMount() {
-        this.setState({ categories: this.props.categories });
-      }
 
     renderItem = ({item, index8}) => {
         return(
@@ -83,7 +72,7 @@ class HomeScreen extends Component {
               isActive ? styles.active : null
             ]}
           >
-            <Text size={16} medium gray={!isActive} secondary={isActive}>
+            <Text style={styles.menu1Text} medium gray={!isActive} secondary={isActive}>
               {tab}
             </Text>
           </TouchableOpacity>
@@ -94,9 +83,9 @@ class HomeScreen extends Component {
 
     render() {
         const {categories} = this.state;
-        const tabs = ['Para Elas', 'Para Eles'];
+        const tabs = ['Todos os itens','Para Elas', 'Para Eles'];
 
-       
+
         return (
             
             <View style={styles.containerPrincipal}>
@@ -105,20 +94,23 @@ class HomeScreen extends Component {
 
                 <View style={styles.menu2}>
                     
+                    <TouchableHighlight activeOpacity={1} 
+                        style={this.state.pressStatus ? styles.buttonPress : styles.button1}
+                        onHideUnderlay={this._onHideUnderlay.bind(this)}
+                        onShowUnderlay={this._onShowUnderlay.bind(this)}>
+                        <Text style={styles.menu2Text}>Blusa</Text>
+                    </TouchableHighlight>
+
                     <TouchableOpacity style={styles.button1}>
-                        <Text style={styles.menuText}>Blusa</Text>
+                        <Text style={styles.menu2Text}>Calça</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button1}>
-                        <Text style={styles.menuText}>Calça</Text>
+                        <Text style={styles.menu2Text}>Short</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button1}>
-                        <Text style={styles.menuText}>Short</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.button1}>
-                        <Text style={styles.menuText}>Calçados</Text>
+                        <Text style={styles.menu2Text}>Calçados</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -126,11 +118,11 @@ class HomeScreen extends Component {
                 <View style={styles.menu2}>
 
                 <TouchableOpacity style={styles.button1}>
-                        <Text style={styles.menuText}>Acessórios</Text>
+                        <Text style={styles.menu2Text}>Acessórios</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button1}>
-                        <Text style={styles.menuText}>Moda Íntima</Text>
+                        <Text style={styles.menu2Text}>Moda Íntima</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -170,18 +162,36 @@ HomeScreen.defaultProps = {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    menuText:{ 
-        fontFamily: 'GE Ergonomic Regular',
+    menu1Text: {
+        fontFamily: 'Roboto_Regular',
+        fontSize: 14,
+        color: 'white',
+        fontWeight: '300',
+        textAlign: 'auto',
+        
+    },
+    
+    menu2Text:{ 
+        fontFamily: 'Roboto_Regular',
         fontSize: 17,
         color: 'white',
         fontWeight: '300',
         textAlign: 'auto',
     },
+    buttonPress: {
+        paddingHorizontal:15,
+        paddingVertical:15,
+        backgroundColor: '#fb7f64',
+        marginRight:2,
+        marginLeft: 2,
+        borderRadius:8
+        
+    },
     
     button1:{
         paddingHorizontal:15,
         paddingVertical:15,
-        backgroundColor:'#c37dc6',
+        backgroundColor:'#3c303e',
         marginRight:2,
         marginLeft: 2,
         borderRadius:8
@@ -190,12 +200,14 @@ const styles = StyleSheet.create({
         flex:1,
     },
     menu1: {
-        
-        flexDirection: 'row',
         justifyContent: 'space-around',
+        backgroundColor: '#3c303e',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        
     },
     menu2: {
-        backgroundColor: '#c37dc6',
+        backgroundColor: '#3c303e',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-evenly'
@@ -226,7 +238,7 @@ const styles = StyleSheet.create({
         paddingBottom: theme.sizes.base
       },
       active: {
-        borderBottomColor: theme.colors.secondary,
+        borderBottomColor: '#FB7F64',
         borderBottomWidth: 3,
       },
       categories: {
