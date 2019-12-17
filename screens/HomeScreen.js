@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import {  StyleSheet, View, FlatList, Image, Dimensions, Button } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {  StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, Text } from 'react-native'
 
-import {Block} from '../components/';
-import {Text} from '../components/';
-import {theme} from '../constants/';
+import {AppLoading} from 'expo';
+
+import * as Font from 'expo-font'
+
+import {theme, mocks} from '../constants/';
 
 
 const { width } = Dimensions.get('window');
@@ -19,16 +20,33 @@ const data = [{
         key: require('../assets/images/masc2.png')
     }];
 const numColumns = 3;
-export default class Home extends Component {
-    constructor(props) {
-        super(props);
-        
-    }
 
+
+
+class HomeScreen extends Component {
     state = {
-        active: 'Tudo',
+        fontLoaded: false,
         categories: [],
     }
+
+    async componentWillMount() {
+        try {
+            await Font.loadAsync({
+            GE_Ergonomic_Regular: require("./assets/fonts/GE_Ergonomic_Regular.ttf"),
+          });
+          this.setState({ fontLoaded: true });
+        }catch(error){
+          console.log('error loading fonts', error);
+    
+        }
+      }
+    
+
+    
+
+   
+
+ 
 
     componentDidMount() {
         this.setState({ categories: this.props.categories });
@@ -42,18 +60,95 @@ export default class Home extends Component {
         );
     };
 
+
+    handleTab = tab => {
+        const { categories } = this.props;
+        const filtered = categories.filter(
+          category => category.tags.includes(tab.toLowerCase())
+        );
+    
+        this.setState({ active: tab, categories: filtered });
+      }
+    
+    renderTab(tab) {
+        const { active } = this.state;
+        const isActive = active === tab;
+    
+        return (
+          <TouchableOpacity
+            key={`tab-${tab}`}
+            onPress={() => this.handleTab(tab)}
+            style={[
+              styles.tab,
+              isActive ? styles.active : null
+            ]}
+          >
+            <Text size={16} medium gray={!isActive} secondary={isActive}>
+              {tab}
+            </Text>
+          </TouchableOpacity>
+        )
+    }
+    
+    
+
     render() {
         const {categories} = this.state;
-        const tabs = ['Tudo', 'Masculino', 'Feminino'];
+        const tabs = ['Para Elas', 'Para Eles'];
 
+       
         return (
+            
             <View style={styles.containerPrincipal}>
 
-                <View style={styles.menu}>
-                    <Button title="Blusas"></Button>
-                    <Button title="Shorts"></Button>
+                <View style={styles.menu1}>{tabs.map(tab => this.renderTab(tab))}</View>
 
-                </View>                
+                <View style={styles.menu2}>
+                    
+                    <TouchableOpacity style={styles.button1}>
+                        <Text style={styles.menuText}>Blusa</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.button1}>
+                        <Text style={styles.menuText}>Calça</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.button1}>
+                        <Text style={styles.menuText}>Short</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.button1}>
+                        <Text style={styles.menuText}>Calçados</Text>
+                    </TouchableOpacity>
+
+                </View>
+
+                <View style={styles.menu2}>
+
+                <TouchableOpacity style={styles.button1}>
+                        <Text style={styles.menuText}>Acessórios</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.button1}>
+                        <Text style={styles.menuText}>Moda Íntima</Text>
+                    </TouchableOpacity>
+
+                </View>
+            
+                
+                {/*
+                <View>
+                    {categories.map(category => (
+                        <TouchableOpacity
+                            key={category.name}
+                            onPress={() => navigation.navigate('Explore', { category })}>
+                
+                                <Image source={category.image} />
+            
+                        </TouchableOpacity>
+                        ))}
+                </View>   
+                 */}   
                 <FlatList 
                     data={data}
                     style={styles.container}
@@ -61,19 +156,49 @@ export default class Home extends Component {
                     numColumns = {numColumns}
                     showsHorizontalScrollIndicator={false}
                 />
+                
             </View>
         );
+                
     }
 }
 
+HomeScreen.defaultProps = {
+    categories: mocks.categories,
+}
+
+export default HomeScreen;
+
 const styles = StyleSheet.create({
+    menuText:{ 
+        fontFamily: 'GE Ergonomic Regular',
+        fontSize: 17,
+        color: 'white',
+        fontWeight: '300',
+        textAlign: 'auto',
+    },
+    
+    button1:{
+        paddingHorizontal:15,
+        paddingVertical:15,
+        backgroundColor:'#c37dc6',
+        marginRight:2,
+        marginLeft: 2,
+        borderRadius:8
+      },
     containerPrincipal: {
         flex:1,
     },
-    menu: {
+    menu1: {
         
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-around',
+    },
+    menu2: {
+        backgroundColor: '#c37dc6',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly'
     },
 
     item: {

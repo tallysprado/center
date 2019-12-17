@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import {AppLoading} from 'expo'
+import * as Font from 'expo-font'
+
+
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 
@@ -12,7 +16,50 @@ const AppNavigator = createStackNavigator({
   },
 })
 
-export default createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(AppNavigator);
+
+class App extends React.Component {
+  state = {
+
+
+    fontLoaded: false
+
+
+  };
+
+
+  async componentWillMount() {
+    try {
+        await Font.loadAsync({
+        GE_Ergonomic_Regular: require("./assets/fonts/GE_Ergonomic_Regular.ttf"),
+      });
+      this.setState({ fontLoaded: true });
+    }catch(error){
+      console.log('error loading fonts', error);
+
+    }
+  }
+
+
+  render() {
+    if (!this.state.fontLoaded) {
+
+
+      return <AppLoading />;
+
+
+    }
+    return (
+      <AppContainer></AppContainer>
+    );
+    
+    }
+}
+
+
+export default App;
+
+//export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {
