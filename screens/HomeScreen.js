@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {  StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, TouchableHighlight ,Text,Animated } from 'react-native'
+import {  ScrollView, StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, TouchableHighlight ,Text,Animated } from 'react-native'
 
 import {AppLoading} from 'expo';
 
@@ -18,8 +18,40 @@ const data = [{
         key: require('../assets/images/masc1.png')
     },{
         key: require('../assets/images/masc2.png')
-    }];
-const numColumns = 3;
+    },
+    {
+        key: require('../assets/images/masc1.png')
+    },
+    {
+        key: require('../assets/images/masc1.png')
+    },
+    {
+        key: require('../assets/images/masc1.png')
+    },
+    {
+        key: require('../assets/images/masc1.png')
+    },
+    {
+        key: require('../assets/images/plus2.png')
+    },
+    {
+        key: require('../assets/images/plus2.png')
+    },
+    {
+        key: require('../assets/images/plus2.png')
+    },
+    {
+        key: require('../assets/images/plus1.png')
+    },
+    {
+        key: require('../assets/images/plus1.png')
+    },
+    {
+        key: require('../assets/images/plus1.png')
+    },
+    
+];
+const numColumns = 2;
 
 var isHidden = true;
 
@@ -169,15 +201,15 @@ class HomeScreen extends Component {
                         </TouchableOpacity>
                         ))}
                 </View>   
-                 */}   
+                 */}
                 <FlatList 
                     data={data}
-                    style={styles.container}
+                    style={{flex:1, top: -100}}
                     renderItem={this.renderItem}
                     numColumns = {numColumns}
                     showsHorizontalScrollIndicator={false}
                 />
-                
+
             </View>
         );
                 
@@ -225,7 +257,7 @@ const styles = StyleSheet.create({
         borderRadius:8
       },
     containerPrincipal: {
-        flex:1,
+        flex: 1,
     },
     menu1: {
         zIndex: 6,
@@ -260,10 +292,9 @@ const styles = StyleSheet.create({
         
     },
     container: {
-        flex: 1,
         position: 'absolute',
-        paddingTop: 75,
-        marginLeft: 5,
+        flex: 1,
+        
             
     },
     tabs: {
