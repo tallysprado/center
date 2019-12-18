@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {  StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, TouchableHighlight ,Text } from 'react-native'
+import {  StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, TouchableHighlight ,Text,Animated } from 'react-native'
 
 import {AppLoading} from 'expo';
 
@@ -21,12 +21,15 @@ const data = [{
     }];
 const numColumns = 3;
 
-
+var isHidden = true;
 
 class HomeScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = { pressStatus: false };
+        this.state = { 
+            pressStatus: false,
+            bounceValue: new Animated.Value(-100),
+        };
     }
     _onHideUnderlay() {
         this.setState({ pressStatus: false });
@@ -34,10 +37,31 @@ class HomeScreen extends Component {
     _onShowUnderlay() {
         this.setState({ pressStatus: true });
     }
+
+    _toggleView(){
+        var toValue = -100;
+        if(isHidden) {
+            toValue =0;
+        }
+
+        Animated.spring(
+            this.state.bounceValue,
+            {
+                toValue: toValue,
+                velocity: 3,
+                tension: 2,
+                friction: 8,
+            }
+        ).start();
+
+        isHidden = !isHidden;
+    }
     
     state = {
         categories: [],
         pressStatus: false,
+        bounceValue: new Animated.Value(-100),
+
     }
 
 
@@ -57,8 +81,13 @@ class HomeScreen extends Component {
         );
     
         this.setState({ active: tab, categories: filtered });
-      }
+    }
     
+    handleTabAndToggleView(tab) {
+        this.handleTab(tab);
+        this._toggleView();
+    }
+
     renderTab(tab) {
         const { active } = this.state;
         const isActive = active === tab;
@@ -66,7 +95,7 @@ class HomeScreen extends Component {
         return (
           <TouchableOpacity
             key={`tab-${tab}`}
-            onPress={() => this.handleTab(tab)}
+            onPress={() => this.handleTabAndToggleView(tab)}
             style={[
               styles.tab,
               isActive ? styles.active : null
@@ -92,7 +121,7 @@ class HomeScreen extends Component {
 
                 <View style={styles.menu1}>{tabs.map(tab => this.renderTab(tab))}</View>
 
-                <View style={styles.menu2}>
+                <Animated.View style={[styles.menu2, {transform: [{translateY: this.state.bounceValue}]}]}>
                     
                     <TouchableHighlight activeOpacity={1} 
                         style={this.state.pressStatus ? styles.buttonPress : styles.button1}
@@ -113,9 +142,9 @@ class HomeScreen extends Component {
                         <Text style={styles.menu2Text}>Calçados</Text>
                     </TouchableOpacity>
 
-                </View>
+                </Animated.View>
 
-                <View style={styles.menu2}>
+                <Animated.View style={[styles.menu3, {transform: [{translateY: this.state.bounceValue}]}]}>
 
                 <TouchableOpacity style={styles.button1}>
                         <Text style={styles.menu2Text}>Acessórios</Text>
@@ -125,7 +154,7 @@ class HomeScreen extends Component {
                         <Text style={styles.menu2Text}>Moda Íntima</Text>
                     </TouchableOpacity>
 
-                </View>
+                </Animated.View>
             
                 
                 {/*
@@ -167,11 +196,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: 'white',
         fontWeight: '300',
-        textAlign: 'auto',
-        
+        textAlign: 'auto',    
     },
     
-    menu2Text:{ 
+    menu2Text: { 
         fontFamily: 'Roboto_Regular',
         fontSize: 17,
         color: 'white',
@@ -200,13 +228,23 @@ const styles = StyleSheet.create({
         flex:1,
     },
     menu1: {
+        zIndex: 6,
+        paddingTop: 45,
         justifyContent: 'space-around',
         backgroundColor: '#3c303e',
         flexDirection: 'row',
-        flexWrap: 'wrap',
+        flexWrap: 'wrap',  
         
     },
     menu2: {
+        zIndex: 5,
+        backgroundColor: '#3c303e',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly'
+    },
+    menu3: {
+        zIndex: 5,
         backgroundColor: '#3c303e',
         flexDirection: 'row',
         flexWrap: 'wrap',
@@ -223,7 +261,8 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        marginVertical: 20,
+        position: 'absolute',
+        paddingTop: 75,
         marginLeft: 5,
             
     },

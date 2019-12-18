@@ -13,8 +13,13 @@ import HomeScreen from './screens/HomeScreen'
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
+    navigationOptions: {
+      header: null,
+    }
   },
-})
+
+  
+},{headerMode: 'screen'})
 
 const AppContainer = createAppContainer(AppNavigator);
 
