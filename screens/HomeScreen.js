@@ -56,11 +56,22 @@ const numColumns = 2;
 var isHidden = true;
 
 class HomeScreen extends Component {
+    state = {
+        active: '',
+        categories: [],
+        pressStatus: false,
+        bounceValue: new Animated.Value(-100),
+        active: [],
+        prev: '',
+    }
+    
     constructor(props) {
         super(props);
         this.state = { 
             pressStatus: false,
             bounceValue: new Animated.Value(-100),
+            active: 'Todos os itens',
+            
         };
     }
     _onHideUnderlay() {
@@ -70,8 +81,21 @@ class HomeScreen extends Component {
         this.setState({ pressStatus: true });
     }
 
-    _toggleView(){
+    _toggleView(active,tab){
         var toValue = -100;
+        if(tab=='Todos os itens'){
+            //desapareça
+            toValue='-100';
+        }
+        if(active=='Para Eles' && tab=='Para Elas'){
+            //desapareça se cli
+            toValue=0;
+        }
+        if(active=='Para Elas' && tab=='Para Eles'){
+            toValue=0;
+        }
+        
+        
         if(isHidden) {
             toValue =0;
         }
@@ -89,12 +113,8 @@ class HomeScreen extends Component {
         isHidden = !isHidden;
     }
     
-    state = {
-        categories: [],
-        pressStatus: false,
-        bounceValue: new Animated.Value(-100),
+    
 
-    }
 
 
     renderItem = ({item, index8}) => {
@@ -111,13 +131,17 @@ class HomeScreen extends Component {
         const filtered = categories.filter(
           category => category.tags.includes(tab.toLowerCase())
         );
-    
-        this.setState({ active: tab, categories: filtered });
+        var active = this.state.active;
+        this._toggleView(active,tab)
+        this.setState({ prev: this.state.active, active: tab, categories: filtered });
+        
+        
+        
     }
     
     handleTabAndToggleView(tab) {
         this.handleTab(tab);
-        this._toggleView();
+        
     }
 
     renderTab(tab) {
