@@ -1,56 +1,84 @@
 import React, { Component } from 'react'
-import {  ScrollView, StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity, TouchableHighlight ,Text,Animated } from 'react-native'
+import {    ImageBackground, StyleSheet, View, 
+            FlatList, Dimensions, TouchableOpacity,
+            TouchableHighlight ,Text,Animated,
+            TouchableWithoutFeedback } from 'react-native'
 
-import {AppLoading} from 'expo';
+import {BlurView} from 'expo-blur';
 
-import * as Font from 'expo-font'
 
 import {theme, mocks} from '../constants/';
 
-
 const { width } = Dimensions.get('window');
-
 const data = [{
-        key: require('../assets/images/plus1.png')
-    },{
-        key: require('../assets/images/plus2.png')
-    },{
-        key: require('../assets/images/masc1.png')
-    },{
-        key: require('../assets/images/masc2.png')
-    },
-    {
-        key: require('../assets/images/masc1.png')
-    },
-    {
-        key: require('../assets/images/masc1.png')
-    },
-    {
-        key: require('../assets/images/masc1.png')
-    },
-    {
-        key: require('../assets/images/masc1.png')
-    },
-    {
-        key: require('../assets/images/plus2.png')
-    },
-    {
-        key: require('../assets/images/plus2.png')
-    },
-    {
-        key: require('../assets/images/plus2.png')
-    },
-    {
-        key: require('../assets/images/plus1.png')
-    },
-    {
-        key: require('../assets/images/plus1.png')
-    },
-    {
-        key: require('../assets/images/plus1.png')
-    },
-    
+    key: require('../assets/images/plus1.png')
+},{
+    key: require('../assets/images/plus2.png')
+},{
+    key: require('../assets/images/masc1.png')
+},{
+    key: require('../assets/images/masc2.png')
+},
+{
+    key: require('../assets/images/masc1.png')
+},
+{
+    key: require('../assets/images/masc1.png')
+},
+{
+    key: require('../assets/images/masc1.png')
+},
+{
+    key: require('../assets/images/masc1.png')
+},
+{
+    key: require('../assets/images/plus2.png')
+},
+{
+    key: require('../assets/images/plus2.png')
+},
+{
+    key: require('../assets/images/plus2.png')
+},
+{
+    key: require('../assets/images/plus1.png')
+},
+{
+    key: require('../assets/images/plus1.png')
+},
+{
+    key: require('../assets/images/plus1.png')
+},
+
 ];
+
+
+
+const Heart = ({filled, style, ...props}) => {
+    const centerNonFilled = (
+        <View style={[StyleSheet.absoluteFill, styles.fit]}>
+            <View style={[styles.leftHeart, styles.heartShape, styles.empty]}></View>
+            <View style={[styles.rigthHeart, styles.heartShape, styles.empty]}></View>
+        </View>
+    )
+    
+    const fillStyle = filled ? styles.filledHeart : styles.empty;
+
+    return (
+        <Animated.View {...props} style ={[styles.heart, style]}>
+            
+                <View  style={[styles.leftHeart, styles.heartShape, fillStyle]}>
+                </View>
+                
+                <View  style={[styles.rightHeart, styles.heartShape, fillStyle]}>
+                </View>
+            
+                {!filled && centerNonFilled}
+        </Animated.View>
+    )
+}
+
+
 const numColumns = 2;
 
 var isHidden = true;
@@ -63,6 +91,7 @@ class HomeScreen extends Component {
         bounceValue: new Animated.Value(-100),
         active: [],
         prev: '',
+        liked: false,
     }
     
     constructor(props) {
@@ -71,9 +100,27 @@ class HomeScreen extends Component {
             pressStatus: false,
             bounceValue: new Animated.Value(-100),
             active: 'Todos os itens',
+            liked: false,
+            scale: new Animated.Value(0),
+            animations: [
+                new Animated.Value(0),
+                new Animated.Value(0),
+                new Animated.Value(0),
+                new Animated.Value(0),
+                new Animated.Value(0),
+                new Animated.Value(0),
+            ]
             
         };
+        this.triggerLike = this.triggerLike.bind(this)
     }
+
+    triggerLike(){
+        this.setState({
+            liked: !this.state.liked
+        })
+    }
+    
     _onHideUnderlay() {
         this.setState({ pressStatus: false });
     }
@@ -117,10 +164,13 @@ class HomeScreen extends Component {
 
 
 
-    renderItem = ({item, index8}) => {
+    renderItem = ({item, index}) => {
         return(
             <View style={styles.item}>
-                <Image style={styles.item} source={item.key}></Image>
+                <ImageBackground style={styles.item} source={item.key}>
+
+                    <BlurView intensity={70} tint='default' style={styles.options}></BlurView>
+                </ImageBackground>
             </View>
         );
     };
@@ -178,7 +228,7 @@ class HomeScreen extends Component {
                 <View style={styles.menu1}>{tabs.map(tab => this.renderTab(tab))}</View>
 
                 <Animated.View style={[styles.menu2, {transform: [{translateY: this.state.bounceValue}]}]}>
-                    
+
                     <TouchableHighlight activeOpacity={1} 
                         style={this.state.pressStatus ? styles.buttonPress : styles.button1}
                         onHideUnderlay={this._onHideUnderlay.bind(this)}
@@ -228,7 +278,7 @@ class HomeScreen extends Component {
                  */}
                 <FlatList 
                     data={data}
-                    style={{flex:1, top: -100}}
+                    style={{bottom: 0,position: 'fixed',paddingBottom: 10, top: -100}}
                     renderItem={this.renderItem}
                     numColumns = {numColumns}
                     showsHorizontalScrollIndicator={false}
@@ -247,6 +297,55 @@ HomeScreen.defaultProps = {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+    options: {
+        justifyContent: 'space-between',
+        flex: 0.25,
+        top: 150,
+    },
+    heart: {
+        width: 40,
+        height: 40, 
+        backgroundColor: 'transparent',
+        left: 5,
+        top: 155,
+        
+    },
+    heartShape: {
+        width: 22,
+        height: 32, 
+        position: 'absolute',
+        
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+    },
+    filledHeart: {
+        backgroundColor: '#e31745',
+    },
+    fit: {
+        transform: [
+            {scale: .2}
+        ]
+    }, 
+    emptyFill: {
+        backgroundColor: '#fff'
+    },
+    empty: {
+        backgroundColor: '#ccc'
+    },
+    leftHeart: {
+        backgroundColor: "#000",
+        transform: [
+            {rotate: '-45deg'}
+        ],
+        left: 5,
+    },
+    rightHeart: {
+        backgroundColor: "#000",
+        transform: [
+            {rotate: '45deg'}
+        ],
+        right: 5
+    },
     menu1Text: {
         fontFamily: 'Roboto_Regular',
         fontSize: 14,
@@ -281,7 +380,6 @@ const styles = StyleSheet.create({
         borderRadius:8
       },
     containerPrincipal: {
-        flex: 1,
     },
     menu1: {
         zIndex: 6,
