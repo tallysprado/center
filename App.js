@@ -25,11 +25,7 @@ const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
   state = {
-
-
     fontLoaded: false
-
-
   };
 
 

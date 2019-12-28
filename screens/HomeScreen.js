@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {    ImageBackground, StyleSheet, View, 
-            FlatList, Dimensions, TouchableOpacity,
+            FlatList, Image, Dimensions, TouchableOpacity,
             TouchableHighlight ,Text,Animated,
             TouchableWithoutFeedback } from 'react-native'
 
-import {BlurView} from 'expo-blur';
 
+import Card from '../components/Card'
 
 import {theme, mocks} from '../constants/';
 
@@ -168,8 +168,14 @@ class HomeScreen extends Component {
         return(
             <View style={styles.item}>
                 <ImageBackground style={styles.item} source={item.key}>
+                    
+                    <TouchableWithoutFeedback onPress={this.triggerLike}>
+                        <Animated.View>
+                        <Heart filled={this.state.liked}></Heart>
 
-                    <BlurView intensity={70} tint='default' style={styles.options}></BlurView>
+                        </Animated.View>
+                    </TouchableWithoutFeedback>
+
                 </ImageBackground>
             </View>
         );
@@ -261,9 +267,51 @@ class HomeScreen extends Component {
                     </TouchableOpacity>
 
                 </Animated.View>
-            
+                
+                <View style={styles.contentContainer}>
+
+
+                    <View style={styles.card}>
+                        <ImageBackground style={styles.image} source={require('../assets/images/plus1.png')}>
+                            <Heart></Heart>
+                        </ImageBackground>
+                    </View>
+
+                    <View style={styles.card}>
+                        <ImageBackground style={styles.image} source={require('../assets/images/plus1.png')}>
+                            <Heart></Heart>
+                        </ImageBackground>
+                    </View>
+
+                    <View style={styles.card}>
+                        <ImageBackground style={styles.image} source={require('../assets/images/plus1.png')}>
+                            <Heart></Heart>
+                        </ImageBackground>
+                    </View>
+
+                    <View style={styles.card}>
+                        <ImageBackground style={styles.image} source={require('../assets/images/plus1.png')}>
+                            <Heart></Heart>
+                        </ImageBackground>
+                    </View>
+
+                    
+
+                </View>
                 
                 {/*
+
+                <FlatList 
+                    data={data}
+                    style={{bottom: 0,position: 'fixed',paddingBottom: 10, top: -100}}
+                    renderItem={this.renderItem}
+                    numColumns = {numColumns}
+                    showsHorizontalScrollIndicator={false}
+                />
+
+                <View style = {styles.contentContainer}>
+                    <CustomImage></CustomImage>
+                </View>
                 <View>
                     {categories.map(category => (
                         <TouchableOpacity
@@ -275,15 +323,9 @@ class HomeScreen extends Component {
                         </TouchableOpacity>
                         ))}
                 </View>   
-                 */}
-                <FlatList 
-                    data={data}
-                    style={{bottom: 0,position: 'fixed',paddingBottom: 10, top: -100}}
-                    renderItem={this.renderItem}
-                    numColumns = {numColumns}
-                    showsHorizontalScrollIndicator={false}
-                />
-
+                
+                
+                */}
             </View>
         );
                 
@@ -297,6 +339,37 @@ HomeScreen.defaultProps = {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+    card: {
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
+        shadowColor: 'black',
+        shadowOffset: { height: 0, width: 0 },
+        padding: 5,
+    },
+    
+    
+    image:{
+        resizeMode: 'contain',
+        width: 185,
+        height: 185,
+    },
+    contentContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        top: -100,
+        paddingLeft: 10,     
+           
+    },
+    col1: {
+        flex: 1,
+        padding: 5,
+
+    },  
+    col2: {
+        flex: 1,
+        padding: 5,
+        
+    },  
     options: {
         justifyContent: 'space-between',
         flex: 0.25,
@@ -307,7 +380,8 @@ const styles = StyleSheet.create({
         height: 40, 
         backgroundColor: 'transparent',
         left: 5,
-        top: 155,
+        top: 145,
+        opacity: 0.7,
         
     },
     heartShape: {
@@ -439,6 +513,7 @@ const styles = StyleSheet.create({
         marginBottom: theme.sizes.base * 3.5,
       },
       category: {
+        
         // this should be dynamic based on screen width
         minWidth: (width - (theme.sizes.padding * 2.4) - theme.sizes.base) / 2,
         maxWidth: (width - (theme.sizes.padding * 2.4) - theme.sizes.base) / 2,
