@@ -1,33 +1,92 @@
-import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import React from 'react'
+import { Animated,Text,FlatList, StyleSheet, View, ImageBackground, TouchableWithoutFeedback } from 'react-native'
 
 import CustomImage from './CustomImage'
 
-export default class ContentContainer extends Component {
-    render() {
-        return (
-            <View style={styles.contentContainer}>
-                <CustomImage style={styles.col1} source={require('../assets/images/plus1.png')} ></CustomImage>
-            
-                <CustomImage style={styles.col2} source={require('../assets/images/masc1.png')} ></CustomImage>
+const ContentContainer = () => {
+    const numColumns = 2
+    const data = [
+        {
+            key: require("../assets/images/plus1.png")
+        },
+        {
+            key: require("../assets/images/plus2.png")
+        },
+        {
+            key: require("../assets/images/masc1.png")
+        },
+        {
+            key: require("../assets/images/masc2.png")
+        },
+        {
+            key: require("../assets/images/masc1.png")
+        },
+        {
+            key: require("../assets/images/masc1.png")
+        },
+        {
+            key: require("../assets/images/masc1.png")
+        },
+        {
+            key: require("../assets/images/masc1.png")
+        },
+        {
+            key: require("../assets/images/plus2.png")
+        },
+        {
+            key: require("../assets/images/plus2.png")
+        },
+        {
+            key: require("../assets/images/plus2.png")
+        },
+        {
+            key: require("../assets/images/plus1.png")
+        },
+        {
+            key: require("../assets/images/plus1.png")
+        },
+        {
+            key: require("../assets/images/plus1.png")
+        }
+    ];
 
-                <CustomImage style={styles.col1} source={require('../assets/images/plus2.png')} ></CustomImage>
-            
-                <CustomImage style={styles.col2} source={require('../assets/images/masc2.png')} ></CustomImage>
-        
-            </View>
+    renderItem = ({ item, index }) => {
+        return (
+          <View style={styles.item}>
+            <ImageBackground style={styles.item} source={item.key}>
+              <TouchableWithoutFeedback onPress={this.triggerLike}>
+                <Animated.View>
+                  
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </ImageBackground>
+          </View>
+        );
+    };
+    
+    return (
+            <FlatList 
+                    data={data}
+                    style={{bottom: 0,position: 'fixed',paddingBottom: 10, top: -100}}
+                    renderItem={this.renderItem}
+                    numColumns = {numColumns}
+                    showsHorizontalScrollIndicator={false}
+                />
         )
-    }
 }
+
+export default ContentContainer
+
 
 const styles = StyleSheet.create({
     contentContainer: {
-        paddingTop: 30,
-        position: 'absolute',
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        padding: 5,
+        top: -100,
+    },  
+    item: {
+        resizeMode: "cover",
+        width: 200,
+        height: 200,
+        marginBottom: 10,
+        marginRight: 5
     },
-
 })

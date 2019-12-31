@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import { View, Animated } from "react-native"
+import { View, StyleSheet } from "react-native"
 
-import Header from '../components/Header'
+import Header from '../components/'
+import ContentContainer from '../components/'
+
 
 const HomeScreen = () => {
     const [active, setActive] = useState("Todos os itens")
@@ -13,8 +15,19 @@ const HomeScreen = () => {
     }, [])
 
     return(
+        <View>
         <Header/>
+        <ContentContainer/>
+        </View>
     )
 }
 
 export default HomeScreen;
+
+
+const styles = StyleSheet.create({
+    mainView: {
+        flexWrap: 'wrap'
+    },
+
+})
