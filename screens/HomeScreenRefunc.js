@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { View, StyleSheet } from "react-native"
 
-import Header from '../components/'
-import ContentContainer from '../components/'
+import {Header,ContentContainer} from '../components/'
+
 
 
 const HomeScreen = () => {
@@ -15,7 +15,7 @@ const HomeScreen = () => {
     }, [])
 
     return(
-        <View>
+        <View style={styles.mainView}>
         <Header/>
         <ContentContainer/>
         </View>

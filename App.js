@@ -8,11 +8,11 @@ import * as Font from 'expo-font'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 
-import HomeScreen from './screens/HomeScreenRefunc'
+import HomeScreenRefunc from './screens/HomeScreenRefunc'
 
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: HomeScreen,
+    screen: HomeScreenRefunc,
     navigationOptions: {
       header: null,
     }

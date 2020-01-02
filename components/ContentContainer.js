@@ -1,52 +1,81 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Animated,Text,FlatList, StyleSheet, View, ImageBackground, TouchableWithoutFeedback } from 'react-native'
 
-import CustomImage from './CustomImage'
+import Heart from './Heart'
+
+
 
 const ContentContainer = () => {
+    
+    
+
     const numColumns = 2
+    
+
     const data = [
         {
-            key: require("../assets/images/plus1.png")
+            key: require("../assets/images/plus1.png"),
+            like: false,
         },
         {
-            key: require("../assets/images/plus2.png")
+            key: require("../assets/images/plus2.png"),
+            like: false,
         },
         {
-            key: require("../assets/images/masc1.png")
+            key: require("../assets/images/masc1.png"),
+            like: false,
         },
         {
-            key: require("../assets/images/masc2.png")
+            key: require("../assets/images/masc2.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/masc1.png")
+            key: require("../assets/images/masc1.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/masc1.png")
+            key: require("../assets/images/masc1.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/masc1.png")
+            key: require("../assets/images/masc1.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/masc1.png")
+            key: require("../assets/images/masc1.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/plus2.png")
+            key: require("../assets/images/plus2.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/plus2.png")
+            key: require("../assets/images/plus2.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/plus2.png")
+            key: require("../assets/images/plus2.png"),
+            like: false,
+
         },
         {
-            key: require("../assets/images/plus1.png")
+            key: require("../assets/images/plus1.png"),
+            like: false,
         },
         {
-            key: require("../assets/images/plus1.png")
+            key: require("../assets/images/plus1.png"),
+            like: false,
         },
         {
-            key: require("../assets/images/plus1.png")
+            key: require("../assets/images/plus1.png"),
+            like: false,
         }
     ];
 
@@ -54,11 +83,7 @@ const ContentContainer = () => {
         return (
           <View style={styles.item}>
             <ImageBackground style={styles.item} source={item.key}>
-              <TouchableWithoutFeedback onPress={this.triggerLike}>
-                <Animated.View>
-                  
-                </Animated.View>
-              </TouchableWithoutFeedback>
+                <Heart filled={item.like}/>
             </ImageBackground>
           </View>
         );
@@ -89,4 +114,5 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginRight: 5
     },
+    
 })

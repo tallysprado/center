@@ -1,5 +1,6 @@
 import React from "react"
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet, View, Animated} from 'react-native'
+
 
 
 const Heart = ({ filled, style, ...props }) => {
@@ -8,7 +9,7 @@ const Heart = ({ filled, style, ...props }) => {
         <View style={[styles.leftHeart, styles.heartShape, styles.empty]}></View>
         <View style={[styles.rigthHeart, styles.heartShape, styles.empty]}></View>
     </View>
-);
+    );
 
 const fillStyle = filled ? styles.filledHeart : styles.empty;
 
@@ -23,7 +24,7 @@ return (
   );
 };
 
-const fillStyle = filled ? styles.filledHeart : styles.empty
+
 
 export default Heart;
 
