@@ -6,8 +6,6 @@ import ImageHeader from './ImageHeader'
 
 import { data } from "../constants/mocks"
 
-// const numColumns = 2
-
 const ContentContainer = () => {
     const [dataState, setData] = useState(data)
 
@@ -19,7 +17,6 @@ const ContentContainer = () => {
                     <TouchableWithoutFeedback>
                         <Animated.View>
                             < Heart filled={item.like}/>
-
                         </Animated.View>
                     </TouchableWithoutFeedback>
                 </ImageBackground>
