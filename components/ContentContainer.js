@@ -4,128 +4,57 @@ import { Animated,Text,FlatList, StyleSheet, View, ImageBackground, TouchableWit
 import Heart from './Heart'
 import ImageHeader from './ImageHeader'
 
+import { data } from "../constants/mocks"
 
+// const numColumns = 2
 
 const ContentContainer = () => {
-    
-    
-    const numColumns = 2
-    
-    const data = [
-        {
-            key: require("../assets/images/plus1.png"),
-            like: false,
-        },
-        {
-            key: require("../assets/images/plus2.png"),
-            like: false,
-        },
-        {
-            key: require("../assets/images/masc1.png"),
-            like: false,
-        },
-        {
-            key: require("../assets/images/masc2.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/masc1.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/masc1.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/masc1.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/masc1.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/plus2.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/plus2.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/plus2.png"),
-            like: false,
-
-        },
-        {
-            key: require("../assets/images/plus1.png"),
-            like: false,
-        },
-        {
-            key: require("../assets/images/plus1.png"),
-            like: false,
-        },
-        {
-            key: require("../assets/images/plus1.png"),
-            like: true,
-        }
-    ];
-
-    
-    
     const [dataState, setData] = useState(data)
-    
-    
 
-    renderItem = ({ item, index }) => {
+    renderItem = ({ item }) => {
         return (
-          <View style={styles.item}>
-            <ImageBackground style={styles.item} source={item.key}>
-                <ImageHeader text={'PinkFashion'}/>
-                <TouchableWithoutFeedback>
-                    <Animated.View>
-                      <Heart filled={item.like}/>
+            <View style={styles.item}>
+                <ImageBackground style={styles.itemImage} source={item.img}>
+                    <ImageHeader text={'PinkFashion'}/>
+                    <TouchableWithoutFeedback>
+                        <Animated.View>
+                            < Heart filled={item.like}/>
 
-                    </Animated.View>
-                </TouchableWithoutFeedback>
-            </ImageBackground>
-          </View>
+                        </Animated.View>
+                    </TouchableWithoutFeedback>
+                </ImageBackground>
+            </View>
         );
     };
-    
+
     return (
+        <View>
             <FlatList 
-                    data={dataState}
-                    style={{bottom: 0,position: 'fixed',paddingBottom: 10, top: -100}}
-                    renderItem={this.renderItem}
-                    numColumns = {numColumns}
-                    showsHorizontalScrollIndicator={false}
-                />
-        )
+                data={dataState}
+                style={styles.flatList}
+                renderItem={renderItem}
+                numColumns={2}
+                showsHorizontalScrollIndicator={false}
+            />
+        </View>
+    )
 }
 
 export default ContentContainer
 
 
-const styles = StyleSheet.create({
-    contentContainer: {
-        top: -100,
-    },  
+const styles = StyleSheet.create({ 
     item: {
-        resizeMode: "cover",
-        width: 200,
-        height: 200,
-        marginBottom: 10,
-        marginRight: 5,
+        width: "50%",
+        height: 210,
+        padding: 10,
     },
-    
-    
-    
+    itemImage: {
+        resizeMode: "center",
+        width: "100%",
+        height: "100%"
+    },
+    flatList: {
+        marginBottom: 130,
+    },
 })

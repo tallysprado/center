@@ -85,9 +85,92 @@ const profile = {
   newsletter: false,
 };
 
+
+const data = [
+  {
+      key: 1,
+      img: require("../assets/images/plus1.png"),
+      like: false,
+  },
+  {
+      key: 2,
+      img: require("../assets/images/plus2.png"),
+      like: false,
+  },
+  {
+      key: 3,
+      img: require("../assets/images/masc1.png"),
+      like: false,
+  },
+  {
+      key: 4,
+      img: require("../assets/images/masc2.png"),
+      like: false,
+
+  },
+  {
+      key: 5,
+      img: require("../assets/images/masc1.png"),
+      like: false,
+
+  },
+  {
+      key: 6,
+      img: require("../assets/images/masc1.png"),
+      like: false,
+
+  },
+  {
+      key: 7,
+      img: require("../assets/images/masc1.png"),
+      like: false,
+
+  },
+  {
+      key: 8,
+      img: require("../assets/images/masc1.png"),
+      like: false,
+
+  },
+  {
+      key: 9,
+      img: require("../assets/images/plus2.png"),
+      like: false,
+
+  },
+  {
+      key: 10,
+      img: require("../assets/images/plus2.png"),
+      like: false,
+
+  },
+  {
+      key: 11,
+      img: require("../assets/images/plus2.png"),
+      like: false,
+
+  },
+  {
+      key: 12,
+      img: require("../assets/images/plus1.png"),
+      like: false,
+  },
+  {
+      key: 13,
+      img: require("../assets/images/plus1.png"),
+      like: false,
+  },
+  {
+      key: 14,
+      img: require("../assets/images/plus1.png"),
+      like: true,
+  }
+];
+
 export {
   categories,
   explore,
   products,
   profile,
+  data
 }

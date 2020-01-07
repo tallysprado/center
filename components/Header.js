@@ -177,7 +177,9 @@ const styles = StyleSheet.create({
     marginLeft: 2,
     borderRadius: 8
   },
-  containerPrincipal: {},
+  containerPrincipal: {
+    zIndex:999999,
+  },
   menu1: {
     zIndex: 6,
     paddingTop: 45,
