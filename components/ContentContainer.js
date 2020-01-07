@@ -123,11 +123,9 @@ const styles = StyleSheet.create({
         width: 200,
         height: 200,
         marginBottom: 10,
-        marginRight: 5
+        marginRight: 5,
     },
-    imageHeader: {
-        paddingBottom: 10,
-    }, 
+    
     
     
 })

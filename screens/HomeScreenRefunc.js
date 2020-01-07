@@ -16,8 +16,8 @@ const HomeScreen = () => {
 
     return(
         <View style={styles.mainView}>
-          <Header style={styles.header}/>
-          <ContentContainer style={styles.ContentContainer}/>
+          <View style={styles.header}><Header /></View>
+          <View style={styles.ContentContainer}><ContentContainer /></View>
         </View>
     )
 }
@@ -27,15 +27,19 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
     mainView: {
-        flexWrap: 'wrap'
+        flex: 1,
     },
     header: {
+        zIndex: 1,
         position: 'absolute',
-        zIndex: 2,
+        width: '100%'
+
     },
     contentContainer: {
+        zIndex: 0,
+        marginTop: 100,
         position: 'absolute',
-        zIndex: 3,
+        marginTop: 100,
     },
 
 })

@@ -184,17 +184,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     backgroundColor: "#3c303e",
     flexDirection: "row",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   menu2: {
-    zIndex: 5,
+    position: 'absolute',
+
+    zIndex: 1,
     backgroundColor: "#3c303e",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-evenly"
   },
   menu3: {
-    zIndex: 5,
     backgroundColor: "#3c303e",
     flexDirection: "row",
     flexWrap: "wrap",
