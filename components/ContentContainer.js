@@ -46,15 +46,15 @@ export default ContentContainer
 const styles = StyleSheet.create({ 
     item: {
         width: "50%",
-        height: 210,
+        height: 240,
         padding: 10,
     },
     itemImage: {
         resizeMode: "center",
         width: "100%",
-        height: "100%"
+        height: 190
     },
     flatList: {
-        marginBottom: 130,
+        marginBottom: 100,
     },
 })
