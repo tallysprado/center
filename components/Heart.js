@@ -24,8 +24,6 @@ return (
   );
 };
 
-
-
 export default Heart;
 
 const styles = StyleSheet.create({
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: "transparent",
         left: 5,
-        top: 145,
+        top: 130,
         opacity: 0.7
       },
       heartShape: {

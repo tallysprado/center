@@ -2,16 +2,15 @@ import React, {useState} from 'react'
 import { Animated,Text,FlatList, StyleSheet, View, ImageBackground, TouchableWithoutFeedback } from 'react-native'
 
 import Heart from './Heart'
+import ImageHeader from './ImageHeader'
 
 
 
 const ContentContainer = () => {
     
     
-
     const numColumns = 2
     
-
     const data = [
         {
             key: require("../assets/images/plus1.png"),
@@ -75,15 +74,27 @@ const ContentContainer = () => {
         },
         {
             key: require("../assets/images/plus1.png"),
-            like: false,
+            like: true,
         }
     ];
+
+    
+    
+    const [dataState, setData] = useState(data)
+    
+    
 
     renderItem = ({ item, index }) => {
         return (
           <View style={styles.item}>
             <ImageBackground style={styles.item} source={item.key}>
-                <Heart filled={item.like}/>
+                <ImageHeader text={'PinkFashion'}/>
+                <TouchableWithoutFeedback>
+                    <Animated.View>
+                      <Heart filled={item.like}/>
+
+                    </Animated.View>
+                </TouchableWithoutFeedback>
             </ImageBackground>
           </View>
         );
@@ -91,7 +102,7 @@ const ContentContainer = () => {
     
     return (
             <FlatList 
-                    data={data}
+                    data={dataState}
                     style={{bottom: 0,position: 'fixed',paddingBottom: 10, top: -100}}
                     renderItem={this.renderItem}
                     numColumns = {numColumns}
@@ -114,5 +125,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginRight: 5
     },
+    imageHeader: {
+        paddingBottom: 10,
+    }, 
+    
     
 })
