@@ -1,6 +1,6 @@
 import ContentContainer from './ContentContainer'
-import Header from './Header'
-import HeaderImage from './Header'
+import MyHeader from './MyHeader'
+import HeaderImage from './ImageHeader'
 import Heart from './Heart'
 
-export { ContentContainer, Header, HeaderImage, Heart };
+export { ContentContainer, MyHeader, HeaderImage, Heart };
