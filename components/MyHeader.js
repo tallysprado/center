@@ -1,6 +1,11 @@
 import React, {useState} from "react"
 import { Header } from "react-native-elements"
 
+
+const tabs = tab => {
+
+}
+
 const MyHeader = () => {
 
   return(
