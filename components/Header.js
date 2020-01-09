@@ -56,15 +56,15 @@ const styles = StyleSheet.create({
         zIndex: 6,
         paddingTop: 45,
         justifyContent: "space-around",
-        backgroundColor: "#3c303e",
+        backgroundColor: "#166138",
         flexDirection: "row",
         flexWrap: "wrap"
       },
       menu1Text: {
-        fontFamily: "Roboto_Regular",
-        fontSize: 14,
+        fontFamily: "CaviarDreams",
+        fontSize: 18,
         color: "white",
-        fontWeight: "300",
+        fontWeight: "600",
         textAlign: "auto"
       },
       tabs: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         paddingBottom: theme.sizes.base
       },
       active: {
-        borderBottomColor: "#FB7F64",
+        borderBottomColor: "#F8AD1E",
         borderBottomWidth: 3
       },
 })

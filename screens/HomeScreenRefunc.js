@@ -12,7 +12,7 @@ const HomeScreen = () => {
     return(
         <View style={styles.mainView}>
             <Header>
-
+                
             </Header>       
         </View>
     )
