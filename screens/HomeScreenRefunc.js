@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { View, StyleSheet } from "react-native"
 //Atualizar o index porra
-import { MyHeader, ContentContainer, Tab } from '../components/'
+import { Header, ContentContainer, Tab } from '../components/'
 
 
 
@@ -11,7 +11,9 @@ const HomeScreen = () => {
 
     return(
         <View style={styles.mainView}>
-            <Tab></Tab>
+            <Header>
+
+            </Header>       
         </View>
     )
 }
