@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import {AppLoading} from 'expo'
 import * as Font from 'expo-font'
 
-import Icon from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 import {createAppContainer} from 'react-navigation'
 
@@ -13,7 +14,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs'
 import {createStackNavigator} from 'react-navigation-stack'
 
 import HomeScreenRefunc from './screens/HomeScreenRefunc'
-
+import {Shirts} from './components'
 
 const AppNavigator = createStackNavigator({
   Home: {
@@ -33,13 +34,27 @@ const TabNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({tintColor}) => (
-        <Icon name="ios-home" size={24}/>
+        <Ionicons name="ios-home" size={24}/>
       )
-    }},
-})
+      
+    },
+  },
+  Shirt: { screen: Shirts, 
+    navigationOptions: {
+      tabBarLabel: 'Blusas',
+      tabBarIcon: ({tintColor}) =>{
+        <FontAwesome5 name={'tshirt'} size={24}/>
+      }
+    }
+
+  },
+    
+
+}
+)
 
 
-const AppContainer = createAppContainer(TabNavigator);
+const AppContainer = createAppContainer(AppNavigator);
 
 const App = ()=> {
   
