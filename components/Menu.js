@@ -13,10 +13,10 @@ class Menu extends React.Component{
   state = {
     index: 0,
     routes: [
-      { key: 'music', title: 'Blusas', icon: 'tshirt', color: '#B11E31' },
-      { key: 'albums', title: 'Sapatos', icon: 'shoe-heel', color: "#F8AD1E" },
-      { key: 'recents', title: 'Acessórios', icon: 'sunglasses', color: "#B11E31" },
-      { key: 'blusas', title: 'Blusas', icon: 'history', color: "#F8AD1E" },
+      { key: 'music', title: 'Blusas', icon: 'tshirt', color: '#333745' },
+      { key: 'albums', title: 'Sapatos', icon: 'shoe-heel', color: "#D55F8F" },
+      { key: 'recents', title: 'Acessórios', icon: 'sunglasses', color: '#333745' },
+      { key: 'blusas', title: 'Blusas', icon: 'history', color: "#D55F8F" },
     ],
   };
 

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         zIndex: 6,
         paddingTop: 45,
         justifyContent: "space-around",
-        backgroundColor: "#166138",
+        backgroundColor: '#333745',
         flexDirection: "row",
         flexWrap: "wrap"
       },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         paddingBottom: theme.sizes.base
       },
       active: {
-        borderBottomColor: "#F8AD1E",
+        borderBottomColor: "#D55F8F",
         borderBottomWidth: 3
       },
 })
