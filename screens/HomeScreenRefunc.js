@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 
 import { View, StyleSheet } from "react-native"
 //Atualizar o index porra
-import { Header, Menu } from '../components/'
+import { HeaderSelector, Menu } from '../components/'
+
+import {Header} from 'react-navigation-stack'
 
 
 
 
-const HomeScreen = () => {
-
+const HomeScreen = ({ navigation }) => {
     return(
         <View style={styles.mainView}>
-            <Header/>
-              
-            <Menu/>     
+            <HeaderSelector navigation={ navigation }/>
         </View>
     )
 }

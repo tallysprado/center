@@ -16,6 +16,9 @@ import {createStackNavigator} from 'react-navigation-stack'
 import HomeScreenRefunc from './screens/HomeScreenRefunc'
 import {Shirts} from './components'
 
+import { Provider } from "react-redux";
+import Store from "./stores/Store";
+
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreenRefunc,
@@ -24,35 +27,7 @@ const AppNavigator = createStackNavigator({
     }
   },
   
-
-
-  
 },{headerMode: 'screen'})
-
-const TabNavigator = createBottomTabNavigator({
-  Home: {screen: HomeScreenRefunc,
-    navigationOptions: {
-      tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => (
-        <Ionicons name="ios-home" size={24}/>
-      )
-      
-    },
-  },
-  Shirt: { screen: Shirts, 
-    navigationOptions: {
-      tabBarLabel: 'Blusas',
-      tabBarIcon: ({tintColor}) =>{
-        <FontAwesome5 name={'tshirt'} size={24}/>
-      }
-    }
-
-  },
-    
-
-}
-)
-
 
 const AppContainer = createAppContainer(AppNavigator);
 
@@ -77,9 +52,9 @@ const App = ()=> {
   }else{
 
   return( 
-    
-      <AppContainer></AppContainer>
-    
+      <Provider store={Store}>
+        <AppContainer></AppContainer>
+      </Provider>
     
   )
 }

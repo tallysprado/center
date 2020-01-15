@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native'
+import {StyleSheet, View, Text, TouchableOpacity, ScrollView} from 'react-native'
 import { DefaultTheme } from 'react-native-paper'
+
 
 
 import {theme, mocks} from '../constants'
@@ -41,12 +42,15 @@ const Header = () => {
         );
       }
 
-    const tabs = ["Todos os itens", "Para Elas", "Para Eles"];
+    const tabs = ["Blusas", "Calças", "Sapatos", "Moletons", "Boné", "Chapéu"];
     return(
-        <View style={styles.menu1}>{tabs.map(tab => this.renderTab(tab, active))}</View>
+        <View style={{flex: 0.125}}>
+          <ScrollView horizontal={true} bounces={false} showsHorizontalScrollIndicator={false}>
+            <View style={styles.menu1}>{tabs.map(tab => this.renderTab(tab, active))}</View>
+          </ScrollView>
+        </View>
     )
 }
-
 
 
 export default Header
