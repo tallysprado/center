@@ -1,27 +1,65 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {StyleSheet, Image, Animated, View} from 'react-native'
+
 import { useSelector, useDispatch } from "react-redux";
 import { ACTIVE_MALE } from "../stores/GenderReducer"
 import { Header, LinearGradient, Text } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {StyleSheet, Image} from 'react-native'
+
+import ReactNativeTooltipMenu from 'react-native-tooltip-menu';
+
+
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import {DrawerNavigator, DrawerItem} from 'react-navigation'
+import {ACTIVE_VIEW} from '../stores/GenderReducer'
 
 
+const active = new Animated.Value(0)
 
-const LeftButton = () => {
+const GenderView = () =>{
+    
+    
     return(
-        <TouchableOpacity>
+        <View style={styles.genderContainer}>
+            
+           
+        </View>
+        
+    )
+}
+
+
+
+const RightButton = () => {
+    const [active, setActive] = useState(false)
+    const y = new Animated.Value(0)
+    
+    //const active = useSelector(state => state.active);
+    //const dispatch = useDispatch();
+    //dispatch({ type: ACTIVE_VIEW })
+
+    
+    return(
+        <TouchableOpacity onPress={()=>{
+            
+        }}
+        >
             <Icon
                 style={styles.icon}
                 name="venus-mars"
                 size={32}
-                color="#fff"
+                color="#000"
+                
             />
+
+            
+            
+            
         </TouchableOpacity>
     )
 }
 
-const RightButton = () => {
+const LeftButton = () => {
     return(
         <TouchableOpacity>
             <Icon
@@ -43,13 +81,21 @@ const CenterLogo = () => {
     )
 }
 
+
 const HeaderSelector = ({ navigation }) => {
-    const gender = useSelector(state => state.gender);
-    const dispatch = useDispatch();
-    dispatch({ type: ACTIVE_MALE })
+    
     return(
         <Header 
-            
+            statusBarProps = {{
+                headerBackground: (
+                <LinearGradient
+                colors={['#4cbdd7', '#3378C3']}
+                start={{ x: 0, y: 1 }}
+                end={{ x: 1, y: 1 }}
+                style={{ flex: 1 }}
+                />
+                )
+            }}
             containerStyle = {styles.header}
             leftComponent={<LeftButton/>}
             centerComponent={<CenterLogo/>}
@@ -70,6 +116,7 @@ HeaderSelector.navigationOptions = {
           style={{ flex: 1 }}
         />
     ),
+    
 
 };
 
@@ -77,14 +124,27 @@ const styles = StyleSheet.create({
     header: {
         paddingTop: 40,
         height: 80,
+
     },
     icon: {
         paddingBottom: 50,
+
     },
     image: {
         height: 80,
         width: 80,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+    }, 
+    animated: {
+        
+    },  
+    genderContainer: {
+        width: 20,
+        height: 50,
+        flexDirection: 'column',
+        backgroundColor: "#000",
+
+        
     }
 })
 
