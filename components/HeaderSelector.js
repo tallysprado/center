@@ -46,9 +46,9 @@ const RightButton = () => {
         >
             <Icon
                 style={styles.icon}
-                name="venus-mars"
+                name="cog"
                 size={32}
-                color="#000"
+                color="#fff"
                 
             />
 

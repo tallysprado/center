@@ -34,9 +34,14 @@ const FemButtom = () => {
 }
 
 const GenderButton = () => {
+    
     return(
     <ReactNativeTooltipMenu
-          buttonComponent={
+        
+        widthType={'auto'}
+        
+        labelContainerStyle={styles.labelContainerStyle}
+        buttonComponent={
             <View
               style={{
                 backgroundColor: '#4cbdd7',
@@ -61,12 +66,13 @@ const GenderButton = () => {
               label: (FemButtom),
               onPress: () => this.setState({ counterItem2: this.state.counterItem2 + 1 }),
             },
-          ]}
-        />
+        ]}
+    />
     )
 }
 
 const HomeScreen = ({ navigation }) => {
+    
     return(
         <View style={styles.mainView}>
             <HeaderSelector navigation={ navigation }/>
@@ -82,4 +88,7 @@ const styles = StyleSheet.create({
     mainView: {
         flex: 1,
     },
+    labelContainerStyle: {
+        
+    }
 })
