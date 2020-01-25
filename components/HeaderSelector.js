@@ -6,7 +6,7 @@ import { ACTIVE_MALE } from "../stores/GenderReducer"
 import { Header, LinearGradient, Text } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import ReactNativeTooltipMenu from 'react-native-tooltip-menu';
+import {Drawer} from 'native-base'
 
 
 import Icon from 'react-native-vector-icons/FontAwesome5'
@@ -16,19 +16,19 @@ import {ACTIVE_VIEW} from '../stores/GenderReducer'
 
 const active = new Animated.Value(0)
 
-const GenderView = () =>{
-    
-    
-    return(
-        <View style={styles.genderContainer}>
-            
-           
+
+
+
+const LeftBar = () => {
+    return (
+        <View style={[ styles.container, { backgroundColor: '#fff' } ]}>
+                <Text>
+                    <Icon name="rocket" size={30} color="#900" />
+                    Conteúdo side bar
+                </Text>
         </View>
-        
-    )
+    );
 }
-
-
 
 const RightButton = () => {
     const [active, setActive] = useState(false)
@@ -61,7 +61,7 @@ const RightButton = () => {
 
 const LeftButton = () => {
     return(
-        <TouchableOpacity>
+        <TouchableOpacity >
             <Icon
                 style={styles.icon}
                 name="tshirt"
@@ -85,6 +85,7 @@ const CenterLogo = () => {
 const HeaderSelector = ({ navigation }) => {
     
     return(
+        
         <Header 
             statusBarProps = {{
                 headerBackground: (

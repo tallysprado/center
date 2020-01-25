@@ -4,11 +4,12 @@ import { View, StyleSheet, Text } from "react-native"
 //Atualizar o index porra
 import { HeaderSelector, Menu } from '../components/'
 
-import {Header} from 'react-navigation-stack'
+
+import {OffCanvas3D} from 'react-native-off-canvas-menu'
 
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
-import ReactNativeTooltipMenu from 'react-native-tooltip-menu';
+import ReactNativeTooltipMenu from 'react-native-tooltip-menu'
 
 
 const MascButtom = () => {
@@ -33,7 +34,8 @@ const FemButtom = () => {
     )
 }
 
-const GenderButton = () => {
+
+const GenderButton = ({navigator}) => {
     
     return(
     <ReactNativeTooltipMenu
@@ -71,12 +73,24 @@ const GenderButton = () => {
     )
 }
 
+
+
 const HomeScreen = ({ navigation }) => {
-    
+
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    handleMenu = () =>{
+        setMenuOpen(!menuOpen)
+    }
+
     return(
+
         <View style={styles.mainView}>
-            <HeaderSelector navigation={ navigation }/>
+            
+            
             <GenderButton/>
+
+
         </View>
     )
 }
