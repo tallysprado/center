@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Animated,Text,FlatList, StyleSheet, View, ImageBackground, TouchableWithoutFeedback } from 'react-native'
+import { Animated,Text,FlatList, StyleSheet, View, Image,ImageBackground, TouchableWithoutFeedback } from 'react-native'
 
 import Heart from './Heart'
 import ImageHeader from './ImageHeader'
@@ -12,14 +12,8 @@ const ContentContainer = () => {
     renderItem = ({ item }) => {
         return (
             <View style={styles.item}>
-                <ImageBackground style={styles.itemImage} source={item.img}>
-                    <ImageHeader text={'PinkFashion'}/>
-                    <TouchableWithoutFeedback>
-                        <Animated.View>
-                            < Heart filled={item.like}/>
-                        </Animated.View>
-                    </TouchableWithoutFeedback>
-                </ImageBackground>
+                <Image style={styles.itemImage} source={item.img}/>
+                    
             </View>
         );
     };

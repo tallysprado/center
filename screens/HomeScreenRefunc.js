@@ -11,6 +11,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import ReactNativeTooltipMenu from 'react-native-tooltip-menu'
 
+import {ContentContainer} from '../components/'
+
 
 const MascButtom = () => {
     return(
@@ -88,8 +90,10 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.mainView}>
             
             
-            <GenderButton/>
+            <GenderButton>
+            </GenderButton>
 
+            <ContentContainer/>
 
         </View>
     )
