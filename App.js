@@ -49,7 +49,7 @@ const CustomDrawerNavigation = (props) => {
       </View>
 
       <View style={{ height: 50, backgroundColor: 'Green', alignItems: 'center', justifyContent: 'center' }}>
-        <Text>John Doe</Text>
+        <Text>John Cena</Text>
       </View>
     </View>
     
@@ -60,11 +60,11 @@ const CustomDrawerNavigation = (props) => {
     <View style={{ alignItems: "center", bottom: 20 }}>
       <View style={{ flexDirection: 'row' }}>
         <View style={{ flexDirection: 'column', marginRight: 15 }}>
-          <Icon name="flask" style={{ fontSize: 24 }} onPress={() => console.log("Tıkladın")} />
+          <Icon name="cog" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
         </View>
        
         <View style={{ flexDirection: 'column' }}>
-          <Icon name="call" style={{ fontSize: 24 }} onPress={() => console.log("Tıkladın")} />
+          <Icon name="info-circle" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
         </View>
       </View>
     </View>
@@ -72,6 +72,8 @@ const CustomDrawerNavigation = (props) => {
   </SafeAreaView>
   );
 }
+
+
 
 const Drawer = createDrawerNavigator({
   Home: {
@@ -95,6 +97,19 @@ const active = false
 const navigationOptionsHeader = ({ navigation }) => {
   return {
     headerTitle: <CenterLogo/>,
+    
+    headerRight: (
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+          <Icon
+              style={styles.icon}
+              name="fire-alt"
+              size={32}
+              color="#fff"
+          />
+      </TouchableOpacity>
+    ),
+
+    
     headerLeft: (
       
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -169,5 +184,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingLeft: 10,
+    paddingRight: 10,
   }
 });
