@@ -32,43 +32,8 @@ const FemButtom = () => {
                 style={styles.icon}
                 name="venus"
                 size={36}
-                color="#4cbdd7"
+                color="pink"
             />
-    )
-}
-
-const GenderButton2 = ({navigator}) => {
-    const inputRef = React.createRef('tooltip2');
-
-    return(
-        <PopoverTooltip
-            ref={inputRef}
-            buttonComponent={
-            <View style={{width:200, height:50, backgroundColor: 'green', justifyContent: 'center', alignItems: 'center', borderRadius: 5}}>
-                <Text>
-                Press Me
-                </Text>
-            </View>
-            }
-
-            animationType='spring' // spring-damper animation
-            springConfig={{tension: 100, friction: 3}}
-        
-            items={[
-            {
-              label: (MascButtom),
-              onPress: () => {},
-            },
-            {
-              label: (FemButtom),
-              onPress: () => {},
-            },
-            ]}
-
-        />
-
-
-          
     )
 }
 

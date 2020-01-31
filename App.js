@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 
-
 import { Text, View, SafeAreaView, StyleSheet, ScrollView, Dimensions, Image , TouchableOpacity, Button} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerItems, DrawerNavigator} from 'react-navigation-drawer'
@@ -8,11 +7,10 @@ import { createDrawerNavigator, DrawerItems, DrawerNavigator} from 'react-naviga
 import {AppLoading} from 'expo'
 import * as Font from 'expo-font'
 
-import {LinearGradient} from 'react-native-linear-gradient'
-
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
-
+import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";
+import { Thumbnail, List, ListItem, Separator } from 'native-base';
 
 import {createStackNavigator} from 'react-navigation-stack'
 
@@ -38,38 +36,118 @@ const CenterLogo = () => {
   )
 }
 
+const Buttons = () => {
+  const [activeSections, setActive] = useState([])
+  
+  
+  
+  return(
+    <View>
+      <Collapse>
+        <CollapseHeader style={{height: 50}}>
+          <Separator bordered>
+            <Text>Acessórios</Text>
+          </Separator>
+        </CollapseHeader>
+
+        <CollapseBody>
+          <ListItem>
+            <TouchableOpacity>
+              <Text>Óculos</Text>
+            </TouchableOpacity>
+          </ListItem>
+
+          <ListItem>
+            <TouchableOpacity>
+              <Text>Pulseira</Text>
+            </TouchableOpacity>
+          </ListItem>
+
+          <ListItem>
+            <TouchableOpacity>
+              <Text>Relógio</Text>
+            </TouchableOpacity>
+          </ListItem>
+          
+          <ListItem>
+            <TouchableOpacity>
+              <Text>Anél</Text>
+            </TouchableOpacity>          
+          </ListItem>
+          
+          <ListItem>
+            <TouchableOpacity>
+              <Text>Brincos</Text>
+            </TouchableOpacity>          
+          </ListItem>
+
+          <ListItem>
+            <TouchableOpacity>
+              <Text>Cordão</Text>
+            </TouchableOpacity>          
+          </ListItem>
+
+          <ListItem>
+            <TouchableOpacity>
+              <Text>Brincos</Text>
+            </TouchableOpacity>          
+          </ListItem>
+        
+        </CollapseBody>
+      </Collapse>
+
+      
+      <Collapse>
+        <CollapseHeader style={{height: 50}}>
+          <Separator bordered>
+            <TouchableOpacity>
+              <Text>Calças</Text>
+            </TouchableOpacity>
+          </Separator>
+        </CollapseHeader>
+
+        
+      </Collapse>
+    </View>
+  )
+}
+
 const CustomDrawerNavigation = (props) => {
   
   
   return (
-  <SafeAreaView style={{ flex: 1 }}>
-    <View style={{ height: 250, backgroundColor: '#4cbdd7', opacity: 0.9 }}>
-      <View style={{ height: 200, backgroundColor: 'Green', alignItems: 'center', justifyContent: 'center' }}>
-        <Image source={require('./assets/images/explore_1.png')} style={{ height: 150, width: 150, borderRadius: 60 }} />
-      </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      
+      <View style={{ height: 250, backgroundColor: '#4cbdd7', opacity: 0.9 }}>
+        <View style={{ height: 200, backgroundColor: 'Green', alignItems: 'center', justifyContent: 'center' }}>
+          <Image source={require('./assets/images/explore_1.png')} style={{ height: 150, width: 150, borderRadius: 60 }} />
+        </View>
 
-      <View style={{ height: 50, backgroundColor: 'Green', alignItems: 'center', justifyContent: 'center' }}>
-        <Text>John Cena</Text>
+        <View style={{ height: 50, backgroundColor: 'Green', alignItems: 'center', justifyContent: 'center' }}>
+          <Text>John Cena</Text>
+        </View>
       </View>
-    </View>
+      
+      <ScrollView>
+        {//<DrawerItems {...props} />
+        }
+        <Buttons/>
+        
+      </ScrollView>
     
-    <ScrollView>
-      <DrawerItems {...props} />
-    </ScrollView>
-  
-    <View style={{ alignItems: "center", bottom: 20 }}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ flexDirection: 'column', marginRight: 15 }}>
-          <Icon name="cog" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
-        </View>
-       
-        <View style={{ flexDirection: 'column' }}>
-          <Icon name="info-circle" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
+      <View style={{ alignItems: "center", bottom: 20 }}>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: 'column', marginRight: 15 }}>
+            <Icon name="cog" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
+          </View>
+        
+          <View style={{ flexDirection: 'column' }}>
+            <Icon name="info-circle" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
+          </View>
         </View>
       </View>
-    </View>
 
-  </SafeAreaView>
+    </SafeAreaView>
   );
 }
 
@@ -80,6 +158,7 @@ const Drawer = createDrawerNavigator({
     screen: HomeScreenRefunc,
     navigationOptions: {
       title: 'Homepage',
+      
     }
   }},
   { 
@@ -102,7 +181,7 @@ const navigationOptionsHeader = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
           <Icon
               style={styles.icon}
-              name="fire-alt"
+              name="shopping-cart"
               size={32}
               color="#fff"
           />
@@ -176,6 +255,17 @@ export default App
 //export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
+  buttons: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  buttonsText: {
+    color: '#4cbdd7',
+    fontFamily: 'Roboto_Regular',
+    fontWeight: '400',
+    fontSize: 20,
+
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

@@ -1924,6 +1924,13 @@ accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
+accordion-collapse-react-native@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.npmjs.org/accordion-collapse-react-native/-/accordion-collapse-react-native-0.2.7.tgz#0a02b4dcbe9f3ca74a5a7c30a7c4fec0b77d7b13"
+  integrity sha512-ComVxU7Dx/3RPV6bzewvQ7m35xOlbwYZsVzWtrnD6MUbMTJjW9nWSm4qHhNkaVTKrrdRh8vBu/zw7Qeb5OuooA==
+  dependencies:
+    lodash.get "4.4.2"
+
 acorn-walk@^6.1.1:
   version "6.2.0"
   resolved "https://registry.npmjs.org/acorn-walk/-/acorn-walk-6.2.0.tgz#123cb8f3b84c2171f1f7fb252615b1c78a6b1a8c"
@@ -7125,6 +7132,11 @@ lodash.assign@^4.2.0:
   resolved "https://registry.npmjs.org/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
   integrity sha1-DZnzzNem0mHRm9rrkkUAXShYCOc=
 
+lodash.get@4.4.2:
+  version "4.4.2"
+  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
+
 lodash.isobject@^3.0.2:
   version "3.0.2"
   resolved "https://registry.npmjs.org/lodash.isobject/-/lodash.isobject-3.0.2.tgz#3c8fb8d5b5bf4bf90ae06e14f2a530a4ed935e1d"
@@ -9778,6 +9790,13 @@ react-native-button-group@^1.0.0:
   resolved "https://registry.npmjs.org/react-native-button-group/-/react-native-button-group-1.0.0.tgz#2dc4683f28e05a109a7a4d7996b37b6c35a44f3c"
   integrity sha512-aHS3GFP9idx7Z6osMWJMCRAfespqBfZzr3Stt+06FoquLtYsVe/RjRJLiPG0TTX7JpfK0ydgz32MsEbbU30mIw==
 
+react-native-collapsible@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npmjs.org/react-native-collapsible/-/react-native-collapsible-1.5.1.tgz#da2937b509921b28bf1b0f9eb8e50ad61c3ffb5d"
+  integrity sha512-uQQ2s6l+7+L/pzJroisWsDsyVYVF5bQ+jGbLATNioRh/03SpEL8pcQEVKqVWswcNNR0B9GENixHaLzmuZIwpQg==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-drawer@2.5.1:
   version "2.5.1"
   resolved "https://registry.npmjs.org/react-native-drawer/-/react-native-drawer-2.5.1.tgz#08b9314184f48c724f1b467f8859797369798654"
@@ -9839,11 +9858,6 @@ react-native-keyboard-aware-scroll-view@0.9.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
-
-react-native-linear-gradient@^2.5.6:
-  version "2.5.6"
-  resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
-  integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
 react-native-modal@^11.5.3:
   version "11.5.3"
@@ -10087,13 +10101,6 @@ react@16.9.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-reactn@^2.2.4:
-  version "2.2.4"
-  resolved "https://registry.npmjs.org/reactn/-/reactn-2.2.4.tgz#f42168177f865feeeba057c8ad558d5456c730f9"
-  integrity sha512-ROZGocaVrunwcyxmmi7tQWk0/NhersX55Zh0yInDXxD2sc7L4iriSu6oG0Cmq2QcwfEJTFXIEL+ASBpDgAYywQ==
-  dependencies:
-    use-force-update "^1.0.5"
 
 read-chunk@2.1.0:
   version "2.1.0"
@@ -12117,11 +12124,6 @@ url@0.11.0, url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-force-update@^1.0.5:
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/use-force-update/-/use-force-update-1.0.7.tgz#f5e672633f5a398b25c33b2287150918bcb3526b"
-  integrity sha512-k5dppYhO+I5X/cd7ildbrzeMZJkWwdAh5adaIk0qKN2euh7J0h2GBGBcB4QZ385eyHHnp7LIygvebdRx3XKdwA==
 
 use-subscription@^1.3.0:
   version "1.3.0"
