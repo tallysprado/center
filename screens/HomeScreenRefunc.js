@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { View, StyleSheet, Text } from "react-native"
 //Atualizar o index porra
 import { HeaderSelector, Menu } from '../components/'
 
 
-import {OffCanvas3D} from 'react-native-off-canvas-menu'
 
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import ReactNativeTooltipMenu from 'react-native-tooltip-menu'
+import PopoverTooltip from 'react-native-popover-tooltip'
+
 
 import {ContentContainer} from '../components/'
 
@@ -36,6 +37,40 @@ const FemButtom = () => {
     )
 }
 
+const GenderButton2 = ({navigator}) => {
+    const inputRef = React.createRef('tooltip2');
+
+    return(
+        <PopoverTooltip
+            ref={inputRef}
+            buttonComponent={
+            <View style={{width:200, height:50, backgroundColor: 'green', justifyContent: 'center', alignItems: 'center', borderRadius: 5}}>
+                <Text>
+                Press Me
+                </Text>
+            </View>
+            }
+
+            animationType='spring' // spring-damper animation
+            springConfig={{tension: 100, friction: 3}}
+        
+            items={[
+            {
+              label: (MascButtom),
+              onPress: () => {},
+            },
+            {
+              label: (FemButtom),
+              onPress: () => {},
+            },
+            ]}
+
+        />
+
+
+          
+    )
+}
 
 const GenderButton = ({navigator}) => {
     
@@ -44,6 +79,8 @@ const GenderButton = ({navigator}) => {
         
         widthType={'auto'}
         
+        componentWrapperStyle={{backgroundColor: 'transparent'}}
+
         labelContainerStyle={styles.labelContainerStyle}
         buttonComponent={
             <View
@@ -90,23 +127,25 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.mainView}>
             
             
-            <GenderButton>
-            </GenderButton>
+            
 
             <ContentContainer/>
+            <GenderButton/>
+            
 
         </View>
     )
 }
 
-export default HomeScreen;
 
+
+
+export default HomeScreen
 
 const styles = StyleSheet.create({
     mainView: {
         flex: 1,
     },
     labelContainerStyle: {
-        
     }
 })

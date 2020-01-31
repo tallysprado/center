@@ -87,6 +87,7 @@ const profile = {
 
 
 const data = [
+  
   {
       key: 1,
       img: require("../assets/images/plus1.png"),
@@ -165,6 +166,7 @@ const data = [
       img: require("../assets/images/plus1.png"),
       like: true,
   }
+  
 ];
 
 export {

@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import GenderReducer from "./GenderReducer";
+import PostsReducer from "./PostsReducer"
 
 const rootReducer = combineReducers({
-    GenderReducer,
+    gender: GenderReducer,
+    like: PostsReducer,
 });
 
 export default rootReducer;
