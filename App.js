@@ -43,7 +43,7 @@ const CustomDrawerNavigation = (props) => {
   
   return (
   <SafeAreaView style={{ flex: 1 }}>
-    <View style={{ height: 250, backgroundColor: '#d2d2d2', opacity: 0.9 }}>
+    <View style={{ height: 250, backgroundColor: '#4cbdd7', opacity: 0.9 }}>
       <View style={{ height: 200, backgroundColor: 'Green', alignItems: 'center', justifyContent: 'center' }}>
         <Image source={require('./assets/images/explore_1.png')} style={{ height: 150, width: 150, borderRadius: 60 }} />
       </View>

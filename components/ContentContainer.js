@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Animated,Text,FlatList, StyleSheet, View, ImageBackground, TouchableWithoutFeedback } from 'react-native'
+import { Animated,Text,FlatList, StyleSheet, View, ImageBackground,Image, TouchableWithoutFeedback } from 'react-native'
 
 import Heart from './Heart'
 import ImageHeader from './ImageHeader'
@@ -18,31 +18,20 @@ import * as Actions from '../stores/PostsReducer'
 const HeaderImage = () => {
     return(
         <View style={styles.header}>
+            <View style={styles.storeLogo}>
+                <Image 
+                    style={styles.storeImage}
+                    source={require('../assets/icons/company.png')}
 
+                />
+            </View>
 
+            <Text style={styles.textLogo}>Nome da Loja </Text>
         </View>
     )
 }
 
-const BottomButtons = (liked) => {
-    
-    
-    
-    return(
-        <View style={styles.bottom}>
-            <TouchableOpacity>
-                <Icon 
-                    name={'fire'}
-                    size={32}
-                    color={liked?'red':'white'}
-                    style={{paddingLeft: 10,}}    
-                    />    
 
-            </TouchableOpacity>
-
-        </View>
-    )
-}
 //se voce começou algo voce nao esta dando um passo para trás 
 
 
@@ -78,8 +67,19 @@ const ContentContainer = (  ) => {
                             <Icon 
                                 name={'fire'}
                                 size={32}
-                                color={item.like ? 'orange':'white'}
+                                color={item.like ? 'orange':'rgba(123, 204, 254, 0.4)'}
                                 style={{paddingLeft: 10,}}    
+                                />    
+
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={ ()=>{} }>
+                            
+                            <Icon 
+                                name={'cart-plus'}
+                                size={32}
+                                color={'rgba(123, 204, 254, 0.4)'}
+                                style={{paddingRight: 10}}    
                                 />    
 
                         </TouchableOpacity>
@@ -118,10 +118,34 @@ const mapDispatchToProps = (dispatch) => ({
 export default ContentContainer
 
 const styles = StyleSheet.create({ 
+    storeLogo: {
+        backgroundColor: 'transparent',
+        width: 60,
+
+    },
+    textLogo: {
+        top: 15,
+        
+        fontSize: 19,
+        fontWeight: '700',
+        color: 'white',
+        fontFamily: 'CaviarDreams',
+        
+    },
+    storeImage:{
+        height: '100%',
+        width: '100%',
+        resizeMode: 'stretch',
+        borderRadius: 25,
+        borderWidth: 3,
+        borderColor: 'rgba(123, 204, 254, 0.4)',
+        marginLeft: 5,
+        marginTop: 5,
+    },
     item: {
         width: "50%",
         height: 240,
-        padding: 10,
+        padding: 5,
     },
     itemImage: {
         resizeMode: "center",
@@ -129,20 +153,24 @@ const styles = StyleSheet.create({
         height: 230,
     },
     flatList: {
+        marginLeft: -5,
+        marginRight: -5,
+        marginTop: -5,
     },
     header: {
-        flexDirection: 'row',
         flexWrap: 'wrap',
+        alignContent: 'space-between',
         //position: 'absolute', 
         //bottom: 0,
         height: 50,
         width: '100%',
-        backgroundColor: 'rgba(123, 204, 254, 0.6)',
+        backgroundColor: 'rgba(123, 204, 254, 0.3)',
     },
     bottom: {
-        flexDirection: 'row',
+        //flexDirection: 'row',
         flexWrap: 'wrap',
         position: 'absolute', 
+        alignContent: 'space-between',
         bottom: 0,
         height: 40,
         width: '100%',
