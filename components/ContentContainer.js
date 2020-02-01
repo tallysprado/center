@@ -13,6 +13,8 @@ import { connect } from 'react-redux';
 import Store from '../stores/Store'
 import {bindActionCreators} from 'redux';
 
+import {theme} from '../constants'
+
 import * as Actions from '../stores/PostsReducer'
 
 const HeaderImage = () => {
@@ -67,7 +69,7 @@ const ContentContainer = (  ) => {
                             <Icon 
                                 name={'fire'}
                                 size={32}
-                                color={item.like ? 'orange':'rgba(123, 204, 254, 0.4)'}
+                                color={item.like ? 'orange':theme.colors.itemIcons}
                                 style={{paddingLeft: 10,}}    
                                 />    
 
@@ -78,7 +80,7 @@ const ContentContainer = (  ) => {
                             <Icon 
                                 name={'cart-plus'}
                                 size={32}
-                                color={'rgba(123, 204, 254, 0.4)'}
+                                color={theme.colors.itemIcons}
                                 style={{paddingRight: 10}}    
                                 />    
 
@@ -138,7 +140,7 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
         borderRadius: 25,
         borderWidth: 3,
-        borderColor: 'rgba(123, 204, 254, 0.4)',
+        borderColor: theme.colors.storeImageBorder,
         marginLeft: 5,
         marginTop: 5,
     },
@@ -164,7 +166,7 @@ const styles = StyleSheet.create({
         //bottom: 0,
         height: 50,
         width: '100%',
-        backgroundColor: 'rgba(123, 204, 254, 0.3)',
+        backgroundColor: theme.colors.headerImage,
     },
     bottom: {
         //flexDirection: 'row',

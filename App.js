@@ -20,6 +20,7 @@ import {Shirts} from './components'
 import { Provider } from "react-redux";
 import Store from "./stores/Store";
 
+import {theme} from './constants'
 
 
 
@@ -118,7 +119,7 @@ const CustomDrawerNavigation = (props) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       
-      <View style={{ height: 250, backgroundColor: '#4cbdd7', opacity: 0.9 }}>
+      <View style={{ height: 250, backgroundColor: theme.colors.drawer, opacity: 0.9 }}>
         <View style={{ height: 200, backgroundColor: 'Green', alignItems: 'center', justifyContent: 'center' }}>
           <Image source={require('./assets/images/explore_1.png')} style={{ height: 150, width: 150, borderRadius: 60 }} />
         </View>
@@ -183,7 +184,7 @@ const navigationOptionsHeader = ({ navigation }) => {
               style={styles.icon}
               name="shopping-cart"
               size={32}
-              color="#fff"
+              color= {theme.colors.headerButtons}
           />
       </TouchableOpacity>
     ),
@@ -196,12 +197,12 @@ const navigationOptionsHeader = ({ navigation }) => {
               style={styles.icon}
               name="tshirt"
               size={32}
-              color="#fff"
+              color={theme.colors.headerButtons}
           />
       </TouchableOpacity>
     ),
     headerStyle:{
-      backgroundColor: '#4cbdd7',
+      backgroundColor: theme.colors.header,
       top: 50,
     },
   };

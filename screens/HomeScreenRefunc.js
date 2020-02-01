@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import ReactNativeTooltipMenu from 'react-native-tooltip-menu'
 import PopoverTooltip from 'react-native-popover-tooltip'
 
+import {theme} from '../constants'
 
 import {ContentContainer} from '../components/'
 
@@ -21,7 +22,7 @@ const MascButtom = () => {
                 style={styles.icon}
                 name="mars"
                 size={36}
-                color="#4cbdd7"
+                color={theme.colors.headerButtons}
             />
     )
 }
@@ -50,7 +51,7 @@ const GenderButton = ({navigator}) => {
         buttonComponent={
             <View
               style={{
-                backgroundColor: '#4cbdd7',
+                backgroundColor: theme.colors.header,
                 padding: 10,
                 borderRadius: 25
               }}
@@ -59,7 +60,7 @@ const GenderButton = ({navigator}) => {
                 style={styles.icon}
                 name="venus-mars"
                 size={36}
-                color="#fff"
+                color={theme.colors.headerButtons}
             />
             </View>
           }
@@ -90,14 +91,10 @@ const HomeScreen = ({ navigation }) => {
     return(
 
         <View style={styles.mainView}>
-            
-            
-            
 
             <ContentContainer/>
             <GenderButton/>
-            
-
+        
         </View>
     )
 }
