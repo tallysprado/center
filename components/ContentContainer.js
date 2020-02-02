@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import { Animated,Text,FlatList, StyleSheet, View, ImageBackground,Image, TouchableWithoutFeedback } from 'react-native'
 
-import Heart from './Heart'
-import ImageHeader from './ImageHeader'
+
 
 import Icon from 'react-native-vector-icons/FontAwesome5'
 

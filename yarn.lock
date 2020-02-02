@@ -9785,6 +9785,13 @@ react-native-animated-item@^1.0.11:
   dependencies:
     prop-types "^15.6.2"
 
+react-native-bottom-action-sheet@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/react-native-bottom-action-sheet/-/react-native-bottom-action-sheet-1.0.4.tgz#e146f5da808262fdc267905687b0b9b91507aa4f"
+  integrity sha512-gEsPNiUWO8ZECUdUFb11lG3YfiWpOm1VPmmzOFLudzzzVHwCobXljIo8IU5RVziplJcGVdWYeWuUn+aGBr/zjA==
+  dependencies:
+    react-native-vector-icons "6.6.0"
+
 react-native-button-group@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/react-native-button-group/-/react-native-button-group-1.0.0.tgz#2dc4683f28e05a109a7a4d7996b37b6c35a44f3c"
@@ -9947,7 +9954,7 @@ react-native-tooltip-menu@^1.1.2:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-vector-icons@^6.6.0:
+react-native-vector-icons@6.6.0, react-native-vector-icons@^6.6.0:
   version "6.6.0"
   resolved "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"
   integrity sha512-MImKVx8JEvVVBnaShMr7/yTX4Y062JZMupht1T+IEgbqBj4aQeQ1z2SH4VHWKNtWtppk4kz9gYyUiMWqx6tNSw==
