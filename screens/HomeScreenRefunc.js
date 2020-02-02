@@ -22,7 +22,7 @@ const MascButtom = () => {
                 style={styles.icon}
                 name="mars"
                 size={36}
-                color={theme.colors.headerButtons}
+                color={theme.colors.masc}
             />
     )
 }
@@ -33,7 +33,7 @@ const FemButtom = () => {
                 style={styles.icon}
                 name="venus"
                 size={36}
-                color="pink"
+                color={theme.colors.fem}
             />
     )
 }

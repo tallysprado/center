@@ -139,11 +139,11 @@ const CustomDrawerNavigation = (props) => {
       <View style={{ alignItems: "center", bottom: 20 }}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flexDirection: 'column', marginRight: 15 }}>
-            <Icon name="cog" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
+            <Icon name="cog" color={theme.colors.header} style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
           </View>
         
           <View style={{ flexDirection: 'column' }}>
-            <Icon name="info-circle" style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
+            <Icon name="fire-alt" color={theme.colors.header} style={{ fontSize: 24, padding: 10, }} onPress={() => console.log("Tıkladın")} />
           </View>
         </View>
       </View>
